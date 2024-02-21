@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *,::after,::before{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            font-family: 'Poppins', sans-serif;
+            background: #bfe3f2;
+        }
+        .card{
+            width: 400px;
+            height: auto;
+            padding: 15px;
+            box-sizing:  0 0 5px rgba(0,0,0,1.0);
+            border-radius: 5px;
+            overflow: hidden;
+            background: #fafbff;
+        }
+        .card .top{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+
+        }
+        .card .top p{
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .card .top button{
+            outline: 0;
+            border: 0;
+            -webkit-appearence:none;
+            background: #5256ad;
+            color: #ffff;
+            border-radius: 4px;
+            transition: 0.3s;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="top">
+            <p></p>
+            <button></button>
+        </div>
+        <form action="/upload" method="post">
+            <span class="inner">Drag & drop image here or
+                <span class="select">Browser</span>
+            </span>
+            <input type="file" name="file" multiple />
+        </form>
+        <div class="container">
+            <div class="image">
+                <img src="image.html" alt="image">
+                <span>&time;</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display and Delete Images</title>
+    <style>
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .image-preview {
+            position: relative;
+            margin: 10px;
+        }
+        .delete-button {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <input type="file" id="file-input" accept="image/*" multiple>
+    <div class="image-container"></div>
+
+    <script>
+        const fileInput = document.getElementById('file-input');
+        const imageContainer = document.querySelector('.image-container');
+
+        fileInput.addEventListener('change', handleFileSelect);
+
+        function handleFileSelect(event) {
+            const files = event.target.files;
+            for (const file of files) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const imagePreview = document.createElement('div');
+                    imagePreview.classList.add('image-preview');
+                    const image = document.createElement('img');
+                    image.src = e.target.result;
+                    imagePreview.appendChild(image);
+                    const deleteButton = document.createElement('button');
+                    deleteButton.classList.add('delete-button');
+                    deleteButton.textContent = 'X';
+                    deleteButton.addEventListener('click', () => {
+                        imagePreview.remove();
+                    });
+                    imagePreview.appendChild(deleteButton);
+                    imageContainer.appendChild(imagePreview);
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+</body>
+</html>
+
